@@ -6,12 +6,13 @@ next = -1
 
 for i in numbers:
     next += 1
+    if numbers[next] == 1:
+        continue
     for j in range(1, numbers[next]+1):
         if numbers[next] % j == 0:
             count += 1
-
-            #if count > 2 or (j != 1 and j != numbers[i]):
-              #  break
+            #if count > 2 or (j != 1 and j != numbers[next]):
+                #break
     if count == 2:
         primes.append(numbers[next])
     else:
