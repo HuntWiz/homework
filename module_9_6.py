@@ -4,8 +4,8 @@ from itertools import combinations
 def all_variants(text):
     for i in range(1, len(text)+1):
         out = ''
-        
-        yield out.join(str(x) for x in combinations(text, i))
+        for x in combinations(text, i):
+            yield f'{''.join(x)}'
 
 
 a = all_variants("abc")
