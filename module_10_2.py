@@ -2,8 +2,7 @@ import threading
 import time
 
 
-def timer():
-    time.sleep(1)
+
 
 
 class Knight(threading.Thread):
@@ -14,12 +13,16 @@ class Knight(threading.Thread):
         self.name = name
         self.power = power
 
+    def timer():
+    time.sleep(1)
+
+    
     def run(self):
         print(f"{self.name}, на нас напали!")
         days = 0
         while self.ENEMY > 0:
             self.ENEMY -= self.power
-            timer()
+            self.timer()
             days += 1
             print(f"{self.name} сражается {days}..., осталось {self.ENEMY} воинов. \n")
         print(f"{self.name} одержал победу спустя {days} дней(дня)! \n")
