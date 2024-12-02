@@ -1,0 +1,16 @@
+WARNING || Неверная скорость для Runner
+Traceback (most recent call last):
+  File "D:\Dowland\Python projects\lesson0\tests_12_4.py", line 22, in test_run
+    runner = exm_for_tests.Runner('Jim', -10)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dowland\Python projects\lesson0\exm_for_tests.py", line 11, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -10
+WARNING || Неверная скорость для Runner
+Traceback (most recent call last):
+  File "D:\Dowland\Python projects\lesson0\tests_12_4.py", line 11, in test_walk
+    runner = exm_for_tests.Runner('Jim', -10)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dowland\Python projects\lesson0\exm_for_tests.py", line 11, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -10
