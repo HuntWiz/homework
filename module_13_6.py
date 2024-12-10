@@ -56,6 +56,10 @@ async def set_age(call):
     await UserState.age.set()
     await call.answer()
 
+@dp.message_handler()
+async def all_message(message):
+    await message.answer('Введите команду /start, чтобы начать общение.')
+
 @dp.message_handler(state=UserState.age)
 async def set_growth(message, state):
     await state.update_data(age = message.text)
