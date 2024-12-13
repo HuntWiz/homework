@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request, Path
+from fastapi import FastAPI, HTTPException, Request, Path, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import uvicorn
@@ -18,18 +18,24 @@ class User(BaseModel):
 
 
 @app.get('/', response_class=HTMLResponse)
-async def main_menu(request: Request):
+async def main_menu(request: Request) -> HTMLResponse:
     return templates.TemplateResponse("index.html", {"request": request, "users": users})
 
 
-@app.get('/users')
-async def get_users() -> list:
-    return users
+@app.get(path='/user/{user_id}')
+async def user_info(request: Request, user_id: int) -> HTMLResponse:
+    try:
+        return templates.TemplateResponse("user.html", {"request": request, "user": users[user_id-1]})
+    except IndexError:
+        raise HTTPException(status_code=404, detail='User was not found')
 
 
 @app.post('/user/{username}/{age}')
 async def post_user(username: str, age: int) -> User:
-    user_id = max((u.id for u in users), default=0) + 1
+    if users:
+        user_id = max(users, key=lambda m: m.id).id+1
+    else:
+        user_id = 1
     new_user = User(id=user_id, username=username, age=age)
     users.append(new_user)
     return new_user

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="card container fluid">
+    <br>
+    <h2>ID: {{user.id}}</h2>
+    <p>
+        <a>Username: {{user.username}}</a>
+        <a>Age: {{user.age}}</a>
+    </p>
+</article>
+{% endblock %}
